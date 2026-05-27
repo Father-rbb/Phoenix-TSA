@@ -15,4 +15,3 @@ function Navbar() {
 }
 
 export default Navbar
-cd Phoenix-TSA
