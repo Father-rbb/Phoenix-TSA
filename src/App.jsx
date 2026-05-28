@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
-import Planets from './components/Planets/Planets'
+import PlanetaryComparison from './components/PlanetaryComparison/PlanetaryComparison'
+import PlanetaryFacts from './components/PlanetaryFacts/PlanetaryFacts'
 import ContactForm from './components/ContactForm/ContactForm'
 import Footer from './components/Footer/Footer'
 
@@ -9,7 +10,8 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <Planets />
+      <PlanetaryComparison />
+      <PlanetaryFacts />
       <ContactForm />
       <Footer />
     </>
