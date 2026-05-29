@@ -1,5 +1,6 @@
 function PlanetaryFacts() {
   return (
+    <>
     <section id="planetary-facts">
       <h2>Planetary Facts at a glance</h2>
 
@@ -109,6 +110,8 @@ function PlanetaryFacts() {
         </table>
 
       </section>
+      <hr />
+      </>
 
   
   );

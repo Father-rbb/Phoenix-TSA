@@ -23,6 +23,7 @@ function PlanetaryComparison() {
   }, []);
 
   return (
+    <>
     <section id="planetary-comparison">
       <div className="pc-header">
         <h2 className="pc-title">Visualizing the Differences Between Planets</h2>
@@ -71,6 +72,9 @@ function PlanetaryComparison() {
       )}
     </section>
   );
+     <hr />
+      </>
+  )
 }
 
 export default PlanetaryComparison;

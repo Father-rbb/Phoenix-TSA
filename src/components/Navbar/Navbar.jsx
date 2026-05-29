@@ -2,6 +2,7 @@ import './Navbar.css'
 
 function Navbar() {
   return (
+    <>
     <nav className="navbar">
       <div className="navbar-logo">
         <h1>Phoenix</h1>
@@ -11,7 +12,11 @@ function Navbar() {
         <li><a href="#contact">Contact Us</a></li>
       </ul>
     </nav>
-  )
+
+     <hr />
+      </>
+
+  );
 }
 
 export default Navbar
