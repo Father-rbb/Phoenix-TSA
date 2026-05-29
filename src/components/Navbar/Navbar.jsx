@@ -1,6 +1,7 @@
 import './Navbar.css'
 
 function Navbar() {
+  <>
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -11,6 +12,11 @@ function Navbar() {
         <li><a href="#contact">Contact Us</a></li>
       </ul>
     </nav>
+
+     <hr />
+      </>
+
+  
   )
 }
 
