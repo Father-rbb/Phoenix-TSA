@@ -71,8 +71,6 @@ function PlanetaryComparison() {
         </div>
       )}
     </section>
-  );
-     <hr />
       </>
   )
 }
