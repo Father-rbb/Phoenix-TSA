@@ -1,8 +1,8 @@
 import './Navbar.css'
 
 function Navbar() {
-  <>
   return (
+    <>
     <nav className="navbar">
       <div className="navbar-logo">
         <h1>Phoenix</h1>
@@ -16,8 +16,7 @@ function Navbar() {
      <hr />
       </>
 
-  
-  )
+  );
 }
 
 export default Navbar
