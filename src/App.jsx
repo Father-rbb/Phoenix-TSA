@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 
+const FORM_ENDPOINT = 'https://whitebricks.com/tsacademy.php'
+
 function App() {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -11,6 +13,8 @@ function App() {
 
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -65,18 +69,37 @@ function App() {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    setSubmitError('')
+
     if (validateForm()) {
-      setSubmitted(true)
-      console.log('Form submitted:', formData)
-      setFormData({
-        fullName: '',
-        email: '',
-        phoneNumber: '',
-        message: '',
-      })
-      setTimeout(() => setSubmitted(false), 3000)
+      setIsSubmitting(true)
+
+      try {
+        await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          },
+          body: new URLSearchParams(formData).toString(),
+        })
+
+        setSubmitted(true)
+        setFormData({
+          fullName: '',
+          email: '',
+          phoneNumber: '',
+          message: '',
+        })
+        setTimeout(() => setSubmitted(false), 3000)
+      } catch (error) {
+        setSubmitError('Unable to send your message right now. Please try again.')
+      } finally {
+        setIsSubmitting(false)
+      }
     }
   }
 
@@ -89,6 +112,7 @@ function App() {
         </p>
 
         {submitted && <div className="success-message">Thank you! We'll be in touch soon.</div>}
+        {submitError && <div className="error-message submit-error">{submitError}</div>}
 
         <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-grid">
@@ -161,8 +185,8 @@ function App() {
           </div>
 
           <div className="form-actions">
-            <button type="submit" className="submit-button">
-              Submit <span className="arrow">›</span>
+            <button type="submit" className="submit-button" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Submit'} <span className="arrow">›</span>
             </button>
           </div>
         </form>
