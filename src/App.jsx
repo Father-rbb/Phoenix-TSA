@@ -1,121 +1,173 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    message: '',
+  })
+
+  const [errors, setErrors] = useState({})
+  const [submitted, setSubmitted] = useState(false)
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
+  const validatePhoneNumber = (phone) => {
+    const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/
+    return phoneRegex.test(phone.replace(/\s/g, ''))
+  }
+
+  const validateForm = () => {
+    const newErrors = {}
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = 'Full name is required'
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required'
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address'
+    }
+
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = 'Phone number is required'
+    } else if (!validatePhoneNumber(formData.phoneNumber)) {
+      newErrors.phoneNumber = 'Please enter a valid phone number'
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required'
+    } else if (formData.message.length > 100) {
+      newErrors.message = 'Message must not exceed 100 characters'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: '',
+      }))
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (validateForm()) {
+      setSubmitted(true)
+      console.log('Form submitted:', formData)
+      setFormData({
+        fullName: '',
+        email: '',
+        phoneNumber: '',
+        message: '',
+      })
+      setTimeout(() => setSubmitted(false), 3000)
+    }
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="contact-form-container">
+      <div className="contact-form-wrapper">
+        <h1>Have Questions About Planetary Science?</h1>
+        <p className="form-description">
+          Interested in learning more about space, astronomy, or how planetary data is collected and analyzed? Reach out and we'll get back to you.
+        </p>
 
-      <div className="ticks"></div>
+        {submitted && <div className="success-message">Thank you! We'll be in touch soon.</div>}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <form onSubmit={handleSubmit} className="contact-form">
+          <div className="form-grid">
+            <div className="form-group">
+              <label htmlFor="fullName">
+                Full Name<span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Full name"
+                value={formData.fullName}
+                onChange={handleChange}
+                className={errors.fullName ? 'error' : ''}
+              />
+              {errors.fullName && <span className="error-message">{errors.fullName}</span>}
+            </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+            <div className="form-group">
+              <label htmlFor="email">
+                Email<span className="required">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@example.com"
+                value={formData.email}
+                onChange={handleChange}
+                className={errors.email ? 'error' : ''}
+              />
+              {errors.email && <span className="error-message">{errors.email}</span>}
+            </div>
+          </div>
+
+          <div className="form-grid">
+            <div className="form-group">
+              <label htmlFor="phoneNumber">
+                Phone Number<span className="required">*</span>
+              </label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="Please enter a valid phone number."
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                className={errors.phoneNumber ? 'error' : ''}
+              />
+              {errors.phoneNumber && <span className="error-message">{errors.phoneNumber}</span>}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message">
+                Message<span className="required">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Enter your message"
+                value={formData.message}
+                onChange={handleChange}
+                className={errors.message ? 'error' : ''}
+                rows="1"
+              />
+              <div className="char-count">100 characters</div>
+              {errors.message && <span className="error-message">{errors.message}</span>}
+            </div>
+          </div>
+
+          <div className="form-actions">
+            <button type="submit" className="submit-button">
+              Submit <span className="arrow">›</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   )
 }
 
