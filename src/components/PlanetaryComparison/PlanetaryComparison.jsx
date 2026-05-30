@@ -4,9 +4,12 @@ function PlanetaryComparison() {
     <section id="planetary-comparison">
       <h2>Planetary Comparison</h2>
     </section>
-     <hr />
-      </>
-  )
-}
 
+    <hr />
+      </>
+
+  
+  );
+}
+  
 export default PlanetaryComparison

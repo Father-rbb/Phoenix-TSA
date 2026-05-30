@@ -1,5 +1,11 @@
 import { useState } from 'react'
 import './App.css'
+import Navbar from './components/Navbar/Navbar'
+import Hero from './components/Hero/Hero'
+import PlanetaryVideo from './components/PlanetaryVideo/PlanetaryVideo'
+import PlanetaryFacts from './components/PlanetaryFacts/PlanetaryFacts'
+import ContactForm from './components/ContactForm/ContactForm'
+import Footer from './components/Footer/Footer'
 
 function App() {
   const [formData, setFormData] = useState({
@@ -168,6 +174,14 @@ function App() {
         </form>
       </div>
     </div>
+    <>
+      <Navbar />
+      <Hero />
+      <PlanetaryVideo />
+      <PlanetaryFacts />
+      <ContactForm />
+      <Footer />
+    </>
   )
 }
 

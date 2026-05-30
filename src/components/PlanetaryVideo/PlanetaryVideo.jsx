@@ -7,7 +7,7 @@ function PlanetaryVideo() {
      <hr />
       </>
       
-  )
+  );
 }
 
 export default PlanetaryVideo
