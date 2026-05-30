@@ -2,7 +2,7 @@ import "./PlanetaryFacts.css";
 
 function PlanetaryFacts() {
   return (
-  <>  
+    <>
     <section id="planetary-facts">
       <h2>Planetary Facts at a Glance</h2>
 
@@ -109,10 +109,12 @@ function PlanetaryFacts() {
           </tbody>
         </table>
       </div>
-    </section>
-    <hr />
-    </>
+    
+      </section>
+      <hr />
+      </>
 
+  
   );
 }
 
