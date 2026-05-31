@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../../App.css'
+import './contactform.css'
 
 const FORM_ENDPOINT = 'https://whitebricks.com/tsacademy.php'
 
