@@ -1,9 +1,5 @@
 import { useState } from 'react'
-<<<<<<< HEAD
 import "./ContactForm.css";
-=======
-import '../../App.css'
->>>>>>> ecc2f5efef81381292ce09cdcfb11741a866fce0
 
 const FORM_ENDPOINT = 'https://whitebricks.com/tsacademy.php'
 
@@ -115,11 +111,7 @@ function ContactForm() {
       <div className="contact-form-wrapper">
         <h1>Have Questions About Planetary Science?</h1>
         <p className="form-description">
-<<<<<<< HEAD
           Interested in learning more about space, astronomy, or how planetary data is collected and analyzed? <br />Reach out and we'll get back to you.
-=======
-          Interested in learning more about space, astronomy, or how planetary data is collected and analyzed? Reach out and we'll get back to you.
->>>>>>> ecc2f5efef81381292ce09cdcfb11741a866fce0
         </p>
 
         {submitted && <div className="success-message">Thank you! We'll be in touch soon.</div>}
