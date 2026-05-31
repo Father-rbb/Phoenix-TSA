@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import './Hero.css'
 import heroImg from '../../assets/Image.png'
 
@@ -24,6 +25,20 @@ function Hero() {
       </section>
     </>
   )
+=======
+function Hero() {
+  return (
+    <>
+    <section id="hero">
+      <h2>Hero Section</h2>
+    </section>
+
+     <hr />
+      </>
+
+  
+  );
+>>>>>>> f241e18966e3a5452c9b61fb3bb8014aed18f6e1
 }
 
 export default Hero
