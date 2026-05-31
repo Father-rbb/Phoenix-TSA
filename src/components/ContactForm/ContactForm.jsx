@@ -22,7 +22,7 @@ function ContactForm() {
   }
 
   const validatePhoneNumber = (phone) => {
-    const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/
+    const phoneRegex = /^[\d\s\-+()]{10,}$/
     return phoneRegex.test(phone.replace(/\s/g, ''))
   }
 
@@ -99,7 +99,7 @@ function ContactForm() {
         message: '',
       })
       setTimeout(() => setSubmitted(false), 3000)
-    } catch (error) {
+   } catch {
       setSubmitError('Unable to send your message right now. Please try again.')
     } finally {
       setIsSubmitting(false)
@@ -107,7 +107,7 @@ function ContactForm() {
   }
 
   return (
-    <div className="contact-form-container" id="contact-form">
+    <div className="contact-form-container" id="contact">
       <div className="contact-form-wrapper">
         <h1>Have Questions About Planetary Science?</h1>
         <p className="form-description">
@@ -182,7 +182,7 @@ function ContactForm() {
                 className={errors.message ? 'error' : ''}
                 rows="1"
               />
-              <div className="char-count">100 characters</div>
+              <div className="char-count">{formData.message.length}/100 characters</div>
               {errors.message && <span className="error-message">{errors.message}</span>}
             </div>
           </div>
