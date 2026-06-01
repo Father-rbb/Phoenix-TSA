@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 import './Hero.css'
 import heroImg from '../../assets/Image.png'
 
 function Hero() {
   return (
     <>
-      {/* HERO SECTION */}
       <section className="hero">
         <div className="hero-text">
           <h1>Explore Our Solar System Through Data</h1>
@@ -16,7 +14,7 @@ function Hero() {
           </p>
           <div className="btn-group">
             <a href="#planetary-comparison" className="btn btn-primary">Explore the Data</a>
-            <a href="#contact-form" className="btn btn-outline">Contact Us</a>
+            <a href="#contact" className="btn btn-outline">Contact Us</a>
           </div>
         </div>
         <div className="hero-image">
@@ -25,20 +23,6 @@ function Hero() {
       </section>
     </>
   )
-=======
-function Hero() {
-  return (
-    <>
-    <section id="hero">
-      <h2>Hero Section</h2>
-    </section>
-
-     <hr />
-      </>
-
-  
-  );
->>>>>>> f241e18966e3a5452c9b61fb3bb8014aed18f6e1
 }
 
 export default Hero
