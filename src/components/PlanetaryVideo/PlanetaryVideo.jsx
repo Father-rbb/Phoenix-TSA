@@ -1,20 +1,41 @@
+import "./PlanetaryVideo.css";
+
 function PlanetaryVideo() {
   return (
-<<<<<<< HEAD
-    <section id="PlanetaryVideo">
-      <h2>Planetary Video</h2>
-    </section>
-  )
-=======
     <>
     <section id="PlanetaryVideo">
       <h2>Planetary Video</h2>
+    <section id="planetary-video">
+      <div className="planetary-video-container">
+
+        <div className="video-card">
+          <video autoPlay muted loop>
+            <source src="/videos/featurevideo.mp4" type="video/mp4" />
+          </video>
+
+          <button className="play-button">
+            ▶
+          </button>
+        </div>
+
+        <div className="planetary-video-text">
+          <h2>
+            How Planetary Data Helps Us Understand Space
+          </h2>
+
+          <p>
+            Planetary science goes beyond images. Comparing
+            <strong> mass, diameter, gravity, </strong>
+            and
+            <strong> density, </strong>
+            we gain insight into how planets form, behave,
+            and interact within the solar system.
+          </p>
+        </div>
+
+      </div>
     </section>
-     <hr />
-      </>
-      
   );
->>>>>>> f241e18966e3a5452c9b61fb3bb8014aed18f6e1
 }
 
-export default PlanetaryVideo
+export default PlanetaryVideo;
