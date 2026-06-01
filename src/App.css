@@ -1,25 +1,18 @@
-<<<<<<< HEAD
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
 html,
 body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 body {
-  background-color: #051540;
+  /* background-color: #051540; */
   color: white;
   font-family: sans-serif;
   overflow-x: hidden;
 }
-=======
-
-
->>>>>>> f241e18966e3a5452c9b61fb3bb8014aed18f6e1
