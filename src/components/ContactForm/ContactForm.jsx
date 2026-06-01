@@ -22,8 +22,8 @@ function ContactForm() {
   };
 
   const validatePhoneNumber = (phone) => {
-    const phoneRegex = /^[\d\s\-+()]{11}$/
-    return phoneRegex.test(phone.replace(/\s/g, ''))
+  if (!phone) return false
+  return isValidPhoneNumber(phone)
   }
 
   const validateForm = () => {
@@ -168,16 +168,21 @@ function ContactForm() {
 
           <div className="form-grid">
             <div className="form-group">
-              <label htmlFor="phoneNumber">
+            <label htmlFor="phoneNumber">
                 Phone Number<span className="required">*</span>
               </label>
-              <input
-                type="tel"
+              <PhoneInput
                 id="phoneNumber"
-                name="phoneNumber"
-                placeholder="Please enter a valid phone number."
+                international
+                defaultCountry="NG"
+                placeholder="Enter phone number"
                 value={formData.phoneNumber}
-                onChange={handleChange}
+                onChange={(value) => {
+                  setFormData((prev) => ({...prev, phoneNumber: value || ''}))
+                  if (errors.phoneNumber) {
+                    setErrors((prev) => ({...prev, phoneNumber: ''}))
+                  }
+                }}
                 className={errors.phoneNumber ? 'error' : ''}
                 maxLength={11}
               />
