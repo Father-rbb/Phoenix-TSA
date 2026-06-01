@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+function ContactForm() {
+  return (
+    <section id="contact-form">
+      <h2>Contact Form Section</h2>
+    </section>
+=======
 import { useState } from 'react'
 import "./ContactForm.css";
 
@@ -195,6 +202,7 @@ function ContactForm() {
         </form>
       </div>
     </div>
+>>>>>>> f241e18966e3a5452c9b61fb3bb8014aed18f6e1
   )
 }
 

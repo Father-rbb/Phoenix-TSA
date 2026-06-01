@@ -2,6 +2,9 @@ import "./PlanetaryVideo.css";
 
 function PlanetaryVideo() {
   return (
+    <>
+    <section id="PlanetaryVideo">
+      <h2>Planetary Video</h2>
     <section id="planetary-video">
       <div className="planetary-video-container">
 

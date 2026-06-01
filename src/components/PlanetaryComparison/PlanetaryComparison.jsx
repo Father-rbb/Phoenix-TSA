@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+function PlanetaryComparison() {
+  return (
+    <section id="planetary-comparison">
+      <h2>Planetary Comparison</h2>
+    </section>
+  )
+}
+
+export default PlanetaryComparison
+=======
 import { useState, useEffect } from "react";
 import "./PlanetaryComparison.css";
 
@@ -77,3 +88,4 @@ function PlanetaryComparison() {
 }
 
 export default PlanetaryComparison;
+>>>>>>> f241e18966e3a5452c9b61fb3bb8014aed18f6e1
