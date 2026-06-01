@@ -22,7 +22,7 @@ function ContactForm() {
   }
 
   const validatePhoneNumber = (phone) => {
-    const phoneRegex = /^[\d\s\-+()]{10,}$/
+    const phoneRegex = /^[\d\s\-+()]{11}$/
     return phoneRegex.test(phone.replace(/\s/g, ''))
   }
 
@@ -164,6 +164,7 @@ function ContactForm() {
                 value={formData.phoneNumber}
                 onChange={handleChange}
                 className={errors.phoneNumber ? 'error' : ''}
+                maxLength={11}
               />
               {errors.phoneNumber && <span className="error-message">{errors.phoneNumber}</span>}
             </div>
