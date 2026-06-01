@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-function ContactForm() {
-  return (
-    <section id="contact-form">
-      <h2>Contact Form Section</h2>
-    </section>
-=======
 import { useState } from 'react'
 import "./ContactForm.css";
 
@@ -79,7 +72,6 @@ function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     setSubmitError('')
 
     if (!validateForm()) {
@@ -106,7 +98,7 @@ function ContactForm() {
         message: '',
       })
       setTimeout(() => setSubmitted(false), 3000)
-   } catch {
+    } catch {
       setSubmitError('Unable to send your message right now. Please try again.')
     } finally {
       setIsSubmitting(false)
@@ -202,7 +194,6 @@ function ContactForm() {
         </form>
       </div>
     </div>
->>>>>>> f241e18966e3a5452c9b61fb3bb8014aed18f6e1
   )
 }
 

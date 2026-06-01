@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-/* NAVBAR */
-.navbar {
-  padding: 20px 50px;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-logo {
-  height: 80px;
-}
-
-/* MOBILE (max 768px) */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 16px 20px;
-  }
-
-  .navbar-logo {
-    height: 50px;
-  }
-=======
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -27,6 +5,10 @@
   padding: 1rem 2rem;
   background-color: #0a0a0a;
   color: white;
+}
+
+.navbar-logo {
+  height: 80px;
 }
 
 .navbar-logo h1 {
@@ -48,5 +30,15 @@
 
 .navbar-links a:hover {
   color: orange;
->>>>>>> f241e18966e3a5452c9b61fb3bb8014aed18f6e1
+}
+
+/* MOBILE (max 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 16px 20px;
+  }
+
+  .navbar-logo {
+    height: 50px;
+  }
 }
