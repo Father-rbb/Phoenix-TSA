@@ -1,5 +1,5 @@
-import './Hero.css'
-import heroImg from '../../assets/Image.png'
+import "./Hero.css";
+import heroImg from "../../assets/Image.png";
 
 function Hero() {
   return (
@@ -8,9 +8,9 @@ function Hero() {
         <div className="hero-text">
           <h1>Explore Our Solar System Through Data</h1>
           <p>
-            Understand the planets not just by name, but by measurable
-            facts. From size and mass to gravity and density, this page
-            breaks down the solar system in a clear, data-driven way.
+            Understand the planets not just by name, but by measurable facts.
+            From size and mass to gravity and density, this page breaks down the
+            solar system in a clear, data-driven way.
           </p>
           <div className="btn-group">
             <a href="#planetary-comparison" className="btn btn-primary">Explore the Data</a>
@@ -22,7 +22,7 @@ function Hero() {
         </div>
       </section>
     </>
-  )
+  );
 }
 
-export default Hero
+export default Hero;
