@@ -3,7 +3,7 @@ import "./PlanetaryFacts.css";
 function PlanetaryFacts() {
   return (
     <>
-      <section id="planetary-facts">
+      <section id="planetary-facts" class="hidden">
         <h2>Planetary Facts at a Glance</h2>
 
         <p>
