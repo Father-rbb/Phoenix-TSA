@@ -3,7 +3,11 @@
 #planetary-facts {
   padding: 60px 40px;
   background-color: #ffffff;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Segoe UI",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 /* ── Header text ── */
@@ -113,5 +117,10 @@
   .pf-table tbody td,
   .pf-table tbody th {
     padding: 10px 10px;
+  }
+}
+@media (max-width: 700px) {
+  .hidden {
+    display: none;
   }
 }
