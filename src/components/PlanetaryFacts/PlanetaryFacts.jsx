@@ -3,9 +3,8 @@ import "./PlanetaryFacts.css";
 function PlanetaryFacts() {
   return (
     <>
-      <section id="planetary-facts" class="hidden">
+      <section id="planetary-facts">
         <h2>Planetary Facts at a Glance</h2>
-
         <p>
           Below is a comparative table of major planets in our solar system. The
           data highlights key physical properties used by astronomers and
@@ -69,44 +68,40 @@ function PlanetaryFacts() {
                 <th rowSpan="4">Jovian Planets</th>
                 <th rowSpan="2">Gas Giants</th>
                 <td>Jupiter</td>
-                <td>1898</td>
-                <td>142,984</td>
-                <td>1326</td>
-                <td>23.1</td>
+                <td>0.330</td>
+                <td>4878</td>
+                <td>5427</td>
+                <td>3.7</td>
               </tr>
-
               <tr>
                 <td>Saturn</td>
-                <td>568</td>
-                <td>120,536</td>
-                <td>687</td>
-                <td>9.0</td>
+                <td>0.330</td>
+                <td>4878</td>
+                <td>5427</td>
+                <td>3.7</td>
               </tr>
-
               <tr>
                 <th rowSpan="2">Ice Giants</th>
                 <td>Uranus</td>
-                <td>86.8</td>
-                <td>51,118</td>
-                <td>1271</td>
-                <td>8.7</td>
+                <td>0.330</td>
+                <td>4878</td>
+                <td>5427</td>
+                <td>3.7</td>
               </tr>
-
               <tr>
                 <td>Neptune</td>
-                <td>102</td>
-                <td>49,528</td>
-                <td>1638</td>
-                <td>11.0</td>
+                <td>0.330</td>
+                <td>4878</td>
+                <td>5427</td>
+                <td>3.7</td>
               </tr>
-
               <tr>
                 <th colSpan="2">Dwarf Planets</th>
                 <td>Pluto</td>
-                <td>0.0146</td>
-                <td>2,370</td>
-                <td>2095</td>
-                <td>0.6</td>
+                <td>0.330</td>
+                <td>4878</td>
+                <td>5427</td>
+                <td>3.7</td>
               </tr>
             </tbody>
           </table>

@@ -13,9 +13,13 @@ function App() {
       <Navbar />
       <Hero />
       <PlanetaryVideo />
+      <hr />
       <PlanetaryComparison />
+      <hr />
       <PlanetaryFacts />
+      <hr />
       <ContactForm />
+      <hr />
       <Footer />
     </>
   );

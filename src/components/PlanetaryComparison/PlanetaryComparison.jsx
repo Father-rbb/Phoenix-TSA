@@ -65,9 +65,7 @@ function PlanetaryComparison() {
                   <span className="pc-planet-name">{planet.planet}</span>
                   <span className="pc-distance">
                     Distance from Sun:{" "}
-                    <strong>
-                      {planet.distanceFromSun.toLocaleString()} million km
-                    </strong>
+                    <strong>{planet.distanceFromSun.toLocaleString()} million km</strong>
                   </span>
                 </figcaption>
               </figure>

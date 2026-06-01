@@ -4,7 +4,6 @@ import heroImg from "../../assets/Image.png";
 function Hero() {
   return (
     <>
-      {/* HERO SECTION */}
       <section className="hero">
         <div className="hero-text">
           <h1>Explore Our Solar System Through Data</h1>
@@ -14,12 +13,8 @@ function Hero() {
             solar system in a clear, data-driven way.
           </p>
           <div className="btn-group">
-            <a href="#planetary-comparison" className="btn btn-primary">
-              Explore the Data
-            </a>
-            <a href="#contact-form" className="btn btn-outline">
-              Contact Us
-            </a>
+            <a href="#planetary-comparison" className="btn btn-primary">Explore the Data</a>
+            <a href="#contact" className="btn btn-outline">Contact Us</a>
           </div>
         </div>
         <div className="hero-image">
