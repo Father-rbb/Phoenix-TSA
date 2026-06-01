@@ -1,0 +1,119 @@
+/* HERO */
+.hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 70px 60px;
+    min-height: 80vh;
+    width: 100%;
+}
+
+.hero-text {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-text h1 {
+    color: #fafbfb;
+    font-size: 2.9rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #c0c8e0;
+    text-align: left;
+    margin-bottom: 45px;
+}
+
+/* BUTTONS */
+.btn-group {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 11px 35px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #1a56db;
+    color: white;
+    border: none;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #c0c8e0;
+    border: 1px solid white;
+}
+
+/* PLANET IMAGE */
+.hero-image img {
+    width: 600px;
+    height: auto;
+    margin-left: 20%;
+    margin-top: -140px;
+}
+
+
+/* TABLET (max 1024px) */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 40px 30px;
+    }
+
+    .hero-image img {
+        width: 400px;
+    }
+}
+
+/* MOBILE (max 768px) */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 20px;
+        height: auto;
+        min-height: auto;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text p {
+        font-size: 15px;
+    }
+
+    .hero-image {
+        margin-top: 20px;
+        margin-left: -20px;
+    }
+
+    .hero-image img {
+        width: 300px;
+        margin-top: 0;
+    }
+
+    .btn-group {
+        justify-content: flex-start;
+    }
+}
