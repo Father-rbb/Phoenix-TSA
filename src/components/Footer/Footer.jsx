@@ -33,7 +33,7 @@ function Footer() {
   </div>
 </footer>
 
-<script src="footer.js"></script>
+
 
     </section>
     </section>
