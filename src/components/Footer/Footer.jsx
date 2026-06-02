@@ -36,5 +36,8 @@ function Footer() {
 <script src="footer.js"></script>
 
     </section>
+    </section>
+  );
+}
 
 export default Footer;

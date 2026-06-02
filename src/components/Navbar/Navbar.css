@@ -1,0 +1,27 @@
+/* NAVBAR */
+.navbar {
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+  background-color: #051540;
+  height: 6.25rem;
+}
+
+.navbar-logo {
+  height: 90px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+}
+
+/* MOBILE (max 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-logo {
+  }
+}
