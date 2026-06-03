@@ -13,8 +13,12 @@ function Hero() {
             solar system in a clear, data-driven way.
           </p>
           <div className="btn-group">
-            <a href="#planetary-comparison" className="btn btn-primary">Explore the Data</a>
-            <a href="#contact" className="btn btn-outline">Contact Us</a>
+            <a href="#planetary-facts" className="btn btn-primary">
+              Explore the Data
+            </a>
+            <a href="#contact" className="btn btn-outline">
+              Contact Us
+            </a>
           </div>
         </div>
         <div className="hero-image">
