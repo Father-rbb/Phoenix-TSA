@@ -50,30 +50,33 @@ function PlanetaryComparison() {
         )}
 
         {!loading && !error && (
-          <div className="pc-grid">
-            {planets.map((planet) => (
-              <figure className="pc-card" key={planet.planet}>
-                <div className="pc-img-wrapper">
-                  <img
-                    src={planet.image}
-                    alt={`Photo of ${planet.planet}`}
-                    className="pc-img"
-                    loading="lazy"
-                  />
-                </div>
-                <figcaption className="pc-caption">
-                  <span className="pc-planet-name">{planet.planet}</span>
-                  <span className="pc-distance">
-                    Distance from Sun:{" "}
-                    <strong>{planet.distanceFromSun.toLocaleString()} million km</strong>
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
+          <div className="container">
+            <div className="pc-grid">
+              {planets.map((planet) => (
+                <figure className="pc-card" key={planet.planet}>
+                  <div className="pc-img-wrapper">
+                    <img
+                      src={planet.image}
+                      alt={`Photo of ${planet.planet}`}
+                      className="pc-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <figcaption className="pc-caption">
+                    <span className="pc-planet-name">{planet.planet}</span>
+                    <span className="pc-distance">
+                      Distance from Sun:{" "}
+                      <strong>
+                        {planet.distanceFromSun.toLocaleString()} million km
+                      </strong>
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         )}
       </section>
-      <hr />
     </>
   );
 }

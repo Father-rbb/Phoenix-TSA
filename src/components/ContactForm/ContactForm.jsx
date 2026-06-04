@@ -1,233 +1,237 @@
-  import { useState } from "react";
-  import "./ContactForm.css";
-  import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
-  import 'react-phone-number-input/style.css';
+import { useState } from "react";
+import "./ContactForm.css";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
-  const FORM_ENDPOINT = "https://whitebricks.com/tsacademy.php";
+const FORM_ENDPOINT = "https://whitebricks.com/tsacademy.php";
 
-  function ContactForm() {
-    const [formData, setFormData] = useState({
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      message: "",
-    });
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    message: "",
+  });
 
-    const [errors, setErrors] = useState({});
-    const [submitted, setSubmitted] = useState(false);
-    const [submitError, setSubmitError] = useState("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const validateEmail = (email) => {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    };
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-    const validatePhoneNumber = (phone) => {
-    if (!phone) return false
-    return isValidPhoneNumber(phone)
+  const validatePhoneNumber = (phone) => {
+    if (!phone) return false;
+    return isValidPhoneNumber(phone);
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Full name is required";
     }
 
-    const validateForm = () => {
-      const newErrors = {};
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
 
-      if (!formData.fullName.trim()) {
-        newErrors.fullName = "Full name is required";
-      }
+    if (!formData.phoneNumber) {
+      newErrors.phoneNumber = "Phone number is required";
+    } else if (!validatePhoneNumber(formData.phoneNumber)) {
+      newErrors.phoneNumber = "Please enter a valid phone number";
+    }
 
-      if (!formData.email.trim()) {
-        newErrors.email = "Email is required";
-      } else if (!validateEmail(formData.email)) {
-        newErrors.email = "Please enter a valid email address";
-      }
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.length > 100) {
+      newErrors.message = "Message must not exceed 100 characters";
+    }
 
-     if (!formData.phoneNumber) {
-        newErrors.phoneNumber = "Phone number is required";
-      } else if (!validatePhoneNumber(formData.phoneNumber)) {
-        newErrors.phoneNumber = "Please enter a valid phone number";
-      }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-      if (!formData.message.trim()) {
-        newErrors.message = "Message is required";
-      } else if (formData.message.length > 100) {
-        newErrors.message = "Message must not exceed 100 characters";
-      }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
 
-      setErrors(newErrors);
-      return Object.keys(newErrors).length === 0;
-    };
-
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prev) => ({
+    if (errors[name]) {
+      setErrors((prev) => ({
         ...prev,
-        [name]: value,
+        [name]: "",
       }));
+    }
+  };
 
-      if (errors[name]) {
-        setErrors((prev) => ({
-          ...prev,
-          [name]: "",
-        }));
-      }
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
+    setSubmitError("");
 
-      setSubmitError("");
+    if (!validateForm()) {
+      return;
+    }
 
-      if (!validateForm()) {
-        return;
-      }
+    setIsSubmitting(true);
 
-      setIsSubmitting(true);
+    try {
+      await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: new URLSearchParams(formData).toString(),
+      });
 
-      try {
-        await fetch(FORM_ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-          },
-          body: new URLSearchParams(formData).toString(),
-        });
+      setSubmitted(true);
+      setFormData({
+        fullName: "",
+        email: "",
+        phoneNumber: "",
+        message: "",
+      });
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch {
+      setSubmitError(
+        "Unable to send your message right now. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-        setSubmitted(true);
-        setFormData({
-          fullName: "",
-          email: "",
-          phoneNumber: "",
-          message: "",
-        });
-        setTimeout(() => setSubmitted(false), 3000);
-      } catch {
-        setSubmitError(
-          "Unable to send your message right now. Please try again.",
-        );
-      } finally {
-        setIsSubmitting(false);
-      }
-    };
+  return (
+    <div className="contact-form-container" id="contact">
+      <div className="contact-form-wrapper">
+        <h1>Have Questions About Planetary Science?</h1>
+        <p className="form-description">
+          Interested in learning more about space, astronomy, or how planetary
+          data is collected and analyzed? <br /> Reach out and we'll get back to
+          you.
+        </p>
 
-    return (
-      <div className="contact-form-container" id="contact">
-        <div className="contact-form-wrapper">
-          <h1>Have Questions About Planetary Science?</h1>
-          <p className="form-description">
-            Interested in learning more about space, astronomy, or how planetary
-            data is collected and analyzed? <br />
-            Reach out and we'll get back to you.
-          </p>
+        {submitted && (
+          <div className="success-message">
+            Thank you! We'll be in touch soon.
+          </div>
+        )}
+        {submitError && (
+          <div className="error-message submit-error">{submitError}</div>
+        )}
 
-          {submitted && (
-            <div className="success-message">
-              Thank you! We'll be in touch soon.
-            </div>
-          )}
-          {submitError && (
-            <div className="error-message submit-error">{submitError}</div>
-          )}
-
-          <form onSubmit={handleSubmit} className="contact-form">
-            <div className="form-grid">
-              <div className="form-group">
-                <label htmlFor="fullName">
-                  Full Name<span className="required">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  placeholder="Full name"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  className={errors.fullName ? "error" : ""}
-                />
-                {errors.fullName && (
-                  <span className="error-message">{errors.fullName}</span>
-                )}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">
-                  Email<span className="required">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="example@example.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={errors.email ? "error" : ""}
-                />
-                {errors.email && (
-                  <span className="error-message">{errors.email}</span>
-                )}
-              </div>
+        <form onSubmit={handleSubmit} className="contact-form">
+          <div className="form-grid">
+            <div className="form-group">
+              <label htmlFor="fullName">
+                Full Name<span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Full name"
+                value={formData.fullName}
+                onChange={handleChange}
+                className={errors.fullName ? "error" : ""}
+              />
+              {errors.fullName && (
+                <span className="error-message">{errors.fullName}</span>
+              )}
             </div>
 
-            <div className="form-grid">
-              <div className="form-group">
+            <div className="form-group">
+              <label htmlFor="email">
+                Email<span className="required">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@example.com"
+                value={formData.email}
+                onChange={handleChange}
+                className={errors.email ? "error" : ""}
+              />
+              {errors.email && (
+                <span className="error-message">{errors.email}</span>
+              )}
+            </div>
+          </div>
+
+          <div className="form-grid">
+            <div className="form-group">
               <label htmlFor="phoneNumber">
-                  Phone Number<span className="required">*</span>
-                </label>
-                <PhoneInput
-                  id="phoneNumber"
-                  international
-                  defaultCountry="NG"
-                  placeholder="Enter phone number"
-                  value={formData.phoneNumber}
-                  onChange={(value) => {
-                    setFormData((prev) => ({...prev, phoneNumber: value || ''}))
-                    if (errors.phoneNumber) {
-                      setErrors((prev) => ({...prev, phoneNumber: ''}))
-                    }
-                  }}
-                  className={errors.phoneNumber ? 'error' : ''}
-                />
-                {errors.phoneNumber && (
-                  <span className="error-message">{errors.phoneNumber}</span>
-                )}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">
-                  Message<span className="required">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Enter your message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className={errors.message ? "error" : ""}
-                  rows="1"
-                />
-                <div className="char-count">
-                  {formData.message.length}/100 characters
-                </div>
-                {errors.message && (
-                  <span className="error-message">{errors.message}</span>
-                )}
-              </div>
+                Phone Number<span className="required">*</span>
+              </label>
+              <PhoneInput
+                id="phoneNumber"
+                className="phoneNumber"
+                international
+                defaultCountry="NG"
+                placeholder="Enter phone number"
+                value={formData.phoneNumber}
+                onChange={(value) => {
+                  setFormData((prev) => ({
+                    ...prev,
+                    phoneNumber: value || "",
+                  }));
+                  if (errors.phoneNumber) {
+                    setErrors((prev) => ({ ...prev, phoneNumber: "" }));
+                  }
+                }}
+                className={errors.phoneNumber ? "error" : ""}
+              />
+              {errors.phoneNumber && (
+                <span className="error-message">{errors.phoneNumber}</span>
+              )}
             </div>
 
-            <div className="form-actions">
-              <button
-                type="submit"
-                className="submit-button"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Submit"}{" "}
-                <span className="arrow">&rsaquo;</span>
-              </button>
+            <div className="form-group">
+              <label htmlFor="message">
+                Message<span className="required">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Enter your message"
+                value={formData.message}
+                onChange={handleChange}
+                className={errors.message ? "error" : ""}
+                rows="1"
+              />
+              <div className="char-count">
+                {formData.message.length}/100 characters
+              </div>
+              {errors.message && (
+                <span className="error-message">{errors.message}</span>
+              )}
             </div>
-          </form>
-        </div>
+          </div>
+
+          <div className="form-actions">
+            <button
+              type="submit"
+              className="submit-button"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Sending..." : "Submit"}{" "}
+              <span className="arrow">&rsaquo;</span>
+            </button>
+          </div>
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
-  export default ContactForm;
+export default ContactForm;
