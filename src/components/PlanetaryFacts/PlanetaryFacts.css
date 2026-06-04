@@ -32,7 +32,7 @@
 .pf-table-wrapper {
   overflow-x: auto;
   border-radius: 14px;
-  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ── Table ── */
