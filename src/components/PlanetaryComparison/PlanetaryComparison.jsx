@@ -26,7 +26,9 @@ function PlanetaryComparison() {
     <>
       <section id="planetary-comparison">
         <div className="pc-header">
-          <h2 className="pc-title">Visualizing the Differences Between Planets</h2>
+          <h2 className="pc-title">
+            Visualizing the Differences Between Planets
+          </h2>
           <p className="pc-subtitle">
             Each planet in our solar system has unique physical characteristics.
             Visual comparisons help highlight how vastly different terrestrial
@@ -77,4 +79,3 @@ function PlanetaryComparison() {
 }
 
 export default PlanetaryComparison;
-

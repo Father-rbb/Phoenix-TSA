@@ -1,22 +1,19 @@
-import './Navbar.css'
+import "./Navbar.css";
+import logoImg from "../../assets/navbar-logo.png";
 
 function Navbar() {
   return (
     <>
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <h1>Phoenix</h1>
-      </div>
-      <ul className="navbar-links">
-        <li><a href="#planets">Explore</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
-    </nav>
-
-     <hr />
-      </>
-
+      {/* Navbar */}
+      <header>
+        <nav className="navbar">
+          <a href="/">
+            <img src={logoImg} alt="Logo" className="navbar-logo" />
+          </a>
+        </nav>
+      </header>
+    </>
   );
 }
 
-export default Navbar
+export default Navbar;
