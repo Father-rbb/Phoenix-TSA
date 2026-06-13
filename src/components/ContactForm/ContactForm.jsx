@@ -79,27 +79,49 @@ function ContactForm() {
       return
     }
 
+    // 1. Console log the form values to verify we have the right data
+    console.log('--- Form Values Being Submitted ---')
+    console.log('fullName:', formData.fullName)
+    console.log('phoneNumber:', formData.phoneNumber)
+    console.log('email:', formData.email)
+    console.log('message:', formData.message)
+
     setIsSubmitting(true)
 
     try {
-      await fetch(FORM_ENDPOINT, {
+      // 2. Send as form-encoded data (not JSON) with the exact field names
+      const body = new URLSearchParams(formData).toString()
+      console.log('Form-encoded body:', body)
+
+      const response = await fetch(FORM_ENDPOINT, {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         },
-        body: new URLSearchParams(formData).toString(),
+        body: body,
       })
 
-      setSubmitted(true)
-      setFormData({
-        fullName: '',
-        email: '',
-        phoneNumber: '',
-        message: '',
-      })
-      setTimeout(() => setSubmitted(false), 3000)
+      // 3. Check response status and log response text
+      const responseText = await response.text()
+      console.log('Response status:', response.status)
+      console.log('Response text:', responseText)
+
+      if (response.status === 200) {
+        console.log('✅ Form submitted successfully!')
+        setSubmitted(true)
+        setFormData({
+          fullName: '',
+          email: '',
+          phoneNumber: '',
+          message: '',
+        })
+        setTimeout(() => setSubmitted(false), 3000)
+      } else {
+        console.error('❌ Submission failed with status:', response.status)
+        setSubmitError(`Submission failed (status ${response.status}). Please try again.`)
+      }
     } catch (error) {
+      console.error('❌ Fetch error:', error)
       setSubmitError('Unable to send your message right now. Please try again.')
     } finally {
       setIsSubmitting(false)
