@@ -8,7 +8,7 @@ The project allows users to learn about different planets, their characteristics
 
 Live Demo
 
-Deployment Link:
+Deployment Link: https://phoenix-tsa.vercel.app/
 
 Team Members
 
