@@ -3,7 +3,7 @@ import "./PlanetaryFacts.css";
 function PlanetaryFacts() {
   return (
     <>
-      <section id="planetary-facts" className="hidden">
+      <section id="planetary-facts">
         <h2>Planetary Facts at a Glance</h2>
         <p>
           Below is a comparative table of major planets in our solar system. The
