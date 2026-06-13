@@ -13,7 +13,7 @@ function Hero() {
             solar system in a clear, data-driven way.
           </p>
           <div className="btn-group">
-            <a href="#planetary-facts" className="btn btn-primary">
+            <a href="#planetary-comparison" className="btn btn-primary">
               Explore the Data
             </a>
             <a href="#contact" className="btn btn-outline">
