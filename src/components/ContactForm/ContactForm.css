@@ -3,7 +3,11 @@
 .contact-form-container {
   background-color: #eef4fb;
   padding: 60px 40px;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Segoe UI",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 .contact-form-wrapper {
@@ -70,7 +74,9 @@
   border: 1.5px solid #ccd9ee;
   border-radius: 8px;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   box-sizing: border-box;
 }
 
@@ -156,7 +162,9 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
 }
 
 .submit-button:hover:not(:disabled) {
@@ -195,7 +203,7 @@
   }
   .form-group input,
   .form-group textarea {
-    min-width: 350px;
+    min-width: 300px;
   }
   .form-group textarea {
     height: 160px;
