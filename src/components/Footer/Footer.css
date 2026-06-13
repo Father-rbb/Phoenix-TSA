@@ -1,0 +1,83 @@
+/* ── Footer.css ── */
+
+#footer {
+  background-color: #051540;
+  color: #ffffff;
+  padding: 48px 40px 32px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ── Top section: About ── */
+.footer-top {
+  padding-bottom: 32px;
+}
+
+.footer-about h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.footer-about p {
+  font-size: 0.88rem;
+  color: #a0aec0;
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+/* ── Divider ── */
+.footer-divider {
+  border-top: 1px solid #1e2d45;
+  margin-bottom: 24px;
+}
+
+/* ── Bottom section ── */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-left p {
+  font-size: 0.82rem;
+  color: #a0aec0;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.footer-left p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Links ── */
+#footer a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+#footer a:hover {
+  color: #90cdf4;
+}
+
+/* ── TSAcademy link on right ── */
+.footer-right a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  #footer {
+    padding: 40px 20px 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

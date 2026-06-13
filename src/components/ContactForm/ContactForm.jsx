@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./ContactForm.css";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 const FORM_ENDPOINT = "https://whitebricks.com/tsacademy.php";
 
@@ -39,7 +41,7 @@ function ContactForm() {
       newErrors.email = "Please enter a valid email address";
     }
 
-    if (!formData.phoneNumber.trim()) {
+    if (!formData.phoneNumber) {
       newErrors.phoneNumber = "Phone number is required";
     } else if (!validatePhoneNumber(formData.phoneNumber)) {
       newErrors.phoneNumber = "Please enter a valid phone number";
@@ -138,8 +140,8 @@ function ContactForm() {
         <h1>Have Questions About Planetary Science?</h1>
         <p className="form-description">
           Interested in learning more about space, astronomy, or how planetary
-          data is collected and analyzed? <br />
-          Reach out and we'll get back to you.
+          data is collected and analyzed? <br /> Reach out and we'll get back to
+          you.
         </p>
 
         {submitted && (
@@ -192,23 +194,26 @@ function ContactForm() {
 
           <div className="form-grid">
             <div className="form-group">
-            <label htmlFor="phoneNumber">
+              <label htmlFor="phoneNumber">
                 Phone Number<span className="required">*</span>
               </label>
               <PhoneInput
                 id="phoneNumber"
+                className="phoneNumber"
                 international
                 defaultCountry="NG"
                 placeholder="Enter phone number"
                 value={formData.phoneNumber}
                 onChange={(value) => {
-                  setFormData((prev) => ({...prev, phoneNumber: value || ''}))
+                  setFormData((prev) => ({
+                    ...prev,
+                    phoneNumber: value || "",
+                  }));
                   if (errors.phoneNumber) {
-                    setErrors((prev) => ({...prev, phoneNumber: ''}))
+                    setErrors((prev) => ({ ...prev, phoneNumber: "" }));
                   }
                 }}
-                className={errors.phoneNumber ? 'error' : ''}
-                maxLength={11}
+                className={errors.phoneNumber ? "error" : ""}
               />
               {errors.phoneNumber && (
                 <span className="error-message">{errors.phoneNumber}</span>

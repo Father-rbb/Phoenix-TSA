@@ -3,7 +3,11 @@
 #planetary-comparison {
   background-color: #eef4fb;
   padding: 60px 40px;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Segoe UI",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 /* ── Header ── */
@@ -43,7 +47,9 @@
   overflow: hidden;
   margin: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .pc-card:hover {
@@ -116,7 +122,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ── Responsive: tablet ── */
@@ -124,12 +132,10 @@
   #planetary-comparison {
     padding: 40px 20px;
   }
-
   .pc-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    justify-content: center;
   }
-
   .pc-title {
     font-size: 1.4rem;
   }
@@ -138,6 +144,6 @@
 /* ── Responsive: mobile ── */
 @media (max-width: 480px) {
   .pc-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2,1fr);
   }
 }

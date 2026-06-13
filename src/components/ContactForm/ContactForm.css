@@ -135,8 +135,18 @@
 }
 
 .submit-button {
+  background-color: #044db3;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 32px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  width: 300px;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 28px;
   font-size: 0.95rem;
@@ -166,16 +176,33 @@
 
 /* ── Responsive: tablet ── */
 @media (max-width: 768px) {
-  .contact-form-container {
-    padding: 40px 20px;
-  }
-
   .form-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-
+  .contact-form-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+  }
   .contact-form-wrapper h1 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  .contact-form-wrapper p {
+    text-align: center;
+  }
+  .form-group input,
+  .form-group textarea {
+    min-width: 350px;
+  }
+  .form-group textarea {
+    height: 160px;
+  }
+  .submit-button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
 }
